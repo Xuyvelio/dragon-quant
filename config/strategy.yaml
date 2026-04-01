@@ -1,0 +1,45 @@
+# Dragon Quant 策略配置文件
+
+backtest:
+  current_period: "6m"
+  periods:
+    3m:
+      start: "20251101"
+      end: "20260201"
+      desc: "近 3 个月"
+    6m:
+      start: "20250801"
+      end: "20260201"
+      desc: "近 6 个月 (推荐)"
+    1y:
+      start: "20250201"
+      end: "20260201"
+      desc: "近 1 年"
+    3y:
+      start: "20230201"
+      end: "20260201"
+      desc: "近 3 年"
+
+strategy:
+  dragon:
+    min_consecutive_limit: 5
+    min_follow_limit: 3
+  entry:
+    ma_period: 5
+    min_yang_body: 5.0
+    fund_flow_positive: true
+    observation_window: 90
+  exit:
+    consecutive_outflow: 2
+    break_ma5: true
+    time_stop: 5
+    target_profit: 0.15
+    stop_loss: 0.08
+  position:
+    max_holdings: 3
+    single_position_limit: 0.33
+
+data:
+  source: "akshare"
+  cache_enabled: true
+  cache_dir: "./cache"

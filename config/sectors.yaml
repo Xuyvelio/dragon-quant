@@ -1,0 +1,30 @@
+# 主线板块配置
+
+sectors:
+  - name: "人工智能"
+    priority: 1
+    keywords: ["AI", "人工智能", "大模型", "AIGC", "算力"]
+  
+  - name: "芯片半导体"
+    priority: 1
+    keywords: ["芯片", "半导体", "存储", "数据库", "集成电路"]
+  
+  - name: "机器人"
+    priority: 1
+    keywords: ["机器人", "人形机器人", "自动化", "智能制造"]
+  
+  - name: "商业航天"
+    priority: 1
+    keywords: ["航天", "卫星", "低空经济", "航空"]
+  
+  - name: "智能驾驶"
+    priority: 2
+    keywords: ["无人驾驶", "自动驾驶", "智能汽车", "车联网"]
+  
+  - name: "软件开发"
+    priority: 2
+    keywords: ["软件", "信创", "国产替代", "操作系统"]
+  
+  - name: "海峡两岸"
+    priority: 2
+    keywords: ["海峡", "两岸", "福建", "自贸区"]

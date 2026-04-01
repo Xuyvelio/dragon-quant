@@ -1,1 +1,142 @@
-IyBEcmFnb24gUXVhbnQgLSBhbGxvdyB0byBxdWFudGlmeSBzeXN0ZW0KCmJhc2VkIG9uIGxlYWRpbmcgc3RvY2sgc3RyYXRlZ3kgd2l0aCA1LWRheSBNQSBicmVha3Rocm91Z2gu
+# 🐉 Dragon Quant - 龙头战法量化交易系统
+
+## 策略说明
+
+基于**龙头回调五日线突破**的短线量化策略，结合技术面 + 资金面三重确认。
+
+### 核心逻辑
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    入场三要素（缺一不可）                     │
+├─────────────────────────────────────────────────────────────┤
+│  ① 站上 5 日均线                                            │
+│  ② 大阳线实体 > 5%                                          │
+│  ③ 主力资金净流入                                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 选股标准
+
+| 条件 | 参数 |
+|------|------|
+| 连板数 | ≥5 板 |
+| 板块 | 主线板块（AI/芯片/机器人/航天等） |
+| 跟风板 | ≥3 只 |
+| 观察窗口 | 回调后 90 天内 |
+
+### 出场条件
+
+- 连续 2 天主力资金流出
+- 收盘价跌破 5 日均线
+- 持仓 5 天不涨
+
+### 仓位管理
+
+- 最大持仓：3 只
+- 单只上限：33%
+
+---
+
+## 🚀 快速开始
+
+### 1. 安装依赖
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. 测试数据连接
+
+```bash
+python test_connection.py
+```
+
+### 3. 运行回测
+
+```bash
+python main.py
+```
+
+---
+
+## ⚙️ 配置说明
+
+### 切换回测周期
+
+编辑 `config/strategy.yaml`：
+
+```yaml
+backtest:
+  current_period: "6m"  # 可选：3m | 6m | 1y | 3y
+```
+
+### 调整策略参数
+
+```yaml
+strategy:
+  dragon:
+    min_consecutive_limit: 5    # 连板要求
+  entry:
+    min_yang_body: 5.0          # 阳线要求
+  position:
+    max_holdings: 3             # 最大持仓
+```
+
+---
+
+## 📁 项目结构
+
+```
+dragon-quant/
+├── config/              # 配置文件
+│   ├── strategy.yaml    # 策略参数
+│   └── sectors.yaml     # 板块配置
+├── data/                # 数据层
+│   └── akshare_fetcher.py
+├── core/                # 核心策略
+│   ├── dragon_selector.py
+│   ├── signal_detector.py
+│   └── position_manager.py
+├── backtest/            # 回测引擎
+│   └── engine.py
+├── utils/               # 工具函数
+│   └── helpers.py
+├── main.py              # 主入口
+├── test_connection.py   # 连接测试
+└── requirements.txt     # 依赖
+```
+
+---
+
+## 📊 预期输出
+
+```
+🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉
+        Dragon Quant - 龙头战法量化交易系统        
+🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉🐉
+
+⚙️  当前配置:
+   回测周期：6m (近 6 个月)
+   连板要求：5 板
+   阳线要求：>5.0%
+   最大持仓：3 只
+
+📊 回测报告
+============================================================
+总收益率：XX.XX%
+最大回撤：XX.XX%
+胜率：XX.XX%
+交易次数：XX
+============================================================
+```
+
+---
+
+## 📝 许可证
+
+MIT License
+
+## 👤 作者
+
+Xuyvelio
